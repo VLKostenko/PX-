@@ -1,0 +1,67 @@
+<app-currency-tracker></app-currency-tracker>
+<div class="main-block-wrapper">
+  <div class="video-wrapper">
+    <video class="video" poster="assets/images/video-poster.jpg" playsinline="" autoplay="" muted="" loop="">
+      <source src="assets/images/video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="main-block">
+    <div class="signup">
+      <div class="logo">
+        <img draggable="false" src="assets/images/logo.svg" alt="payyex logo">
+        <div class="title">{{"slogan" | translate}}</div>
+      </div>
+      <!--<h1 translate>Title</h1>-->
+      <div class="buttons">
+        <a class="btn btn_big waves-effect" draggable="false" translate (click)="openModal()">Sign Up Now</a>
+        <p class="middle" translate>Already Have an Account?</p>
+        <a class="btn btn_big waves-effect" draggable="false" translate (click)="openModal()">Log In</a>
+      </div>
+    </div>
+    <div class="advantages">
+      <div class="title" translate>What can you do with Payyex?</div>
+      <ul class="list" translate [class.muted]="activeLink1 || activeLink2 || activeLink3">
+        <li
+                translate
+                (mouseover)="activeLink1 = true"
+                (mouseleave)="activeLink1 = false"
+                [class.active]="activeLink1"
+                [routerLink]="['/exchange']">Buy and sell bitcoin and other cryptocurrencies and tokens.</li>
+        <li
+                translate
+                (mouseover)="activeLink2 = true"
+                (mouseleave)="activeLink2 = false"
+                [class.active]="activeLink2"
+                [routerLink]="['/merchant']">Accept bitcoin payments at your shop.</li>
+        <li
+                translate
+                (mouseover)="activeLink3 = true"
+                (mouseleave)="activeLink3 = false"
+                [class.active]="activeLink3"
+                [routerLink]="['/api']">Make automated trading with our API.</li>
+      </ul>
+      <p translate>We have special solutions and advantages for corporate clients.
+         <a draggable="false" href="javascript:void(0)" translate [routerLink]="['/corporate']">Click to see</a>
+      </p>
+      <ul class="pages-list">
+        <li translate
+            [routerLink]="['/limits']">Limits & Fees</li>
+        <li translate
+            [routerLink]="['/contact']">Reach Us</li>
+        <li translate
+            [routerLink]="['/apidocs']">API Docs</li>
+        <li translate
+            [routerLink]="['/faq']">FAQ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>

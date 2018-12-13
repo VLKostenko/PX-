@@ -1,0 +1,27 @@
+<ul class="tabs__tab-bar">
+  <ng-container *ngFor="let tab of tabs; let index = index">
+    <!--{{ tab.alreadyExists | json }}-->
+    <li *ngIf="!tab.alreadyExists" (click)="selectTab(tab, index)"
+        class="tabs__tab"
+        [class.active]="tab.active">
+      {{ tab.title }}
+    </li>
+  </ng-container>
+  <!--<ng-container *ngIf="categories">-->
+    <!--<li *ngFor="let tab of filteredTabs; let index = index"-->
+        <!--(click)="selectTab(tab, index)"-->
+        <!--class="tabs__tab"-->
+        <!--[class.active]="tab.active">-->
+      <!--{{ tab.title }}-->
+    <!--</li>-->
+  <!--</ng-container>-->
+  <!--<ng-container *ngIf="!categories">-->
+    <!--<li *ngFor="let tab of tabs; let index = index"-->
+        <!--(click)="selectTab(tab, index)"-->
+        <!--class="tabs__tab"-->
+        <!--[class.active]="tab.active">-->
+      <!--{{ tab.title }}-->
+    <!--</li>-->
+  <!--</ng-container>-->
+</ul>
+<ng-content></ng-content>

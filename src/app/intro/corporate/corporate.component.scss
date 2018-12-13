@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {
+  .page-content {
+    padding: 100px 20px 120px;
+  }
+  @media screen and (max-width: 767px) {
+    text-align: left;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding-bottom: 140px;
+  }
+}
+
+.halfsize {
+  margin: 0 auto;
+}
+
+.page-content p {
+  text-align: left;
+}
+

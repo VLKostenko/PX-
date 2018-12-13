@@ -1,0 +1,95 @@
+<div class="page-content">
+  <div class="inside-header">
+    <a class="logo" routerLink="/home" draggable="false">
+      <img src="assets/images/logo-violet.svg" alt="logo payyex" draggable="false">
+      <div class="title">{{"slogan" | translate}}</div>
+    </a>
+  </div>
+  <a draggable="false" [routerLink]="['/']" class="move-back">
+    <img src="assets/images/arrow-up.svg" alt="arrow up" draggable="false">
+  </a>
+  <h1 class="title black" translate>Limits & Fees</h1>
+  <custom-tabs [activeTabs]="true">
+    <custom-tab tabTitle="{{ 'Limits' | translate }}">
+      <h4 class="title" translate>Limits</h4>
+      <p>{{ 'limits-and-fees-first' | translate }}</p>
+      <p>{{ 'limits-and-fees-second' | translate }}</p>
+      <table>
+        <tr>
+          <th translate>Unverified Accounts</th>
+          <th translate>Verified Accounts</th>
+        </tr>
+        <tr>
+          <td><span translate>Daily deposit:</span><span class="span"> 500 TRY</span></td>
+          <td><span translate>Daily deposit:</span><span class="span"> 50,000 TRY</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Daily withdrawal:</span><span class="span"> 500 TRY</span></td>
+          <td><span translate>Daily withdrawal:</span><span class="span"> 50,000 TRY</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Monthly deposit:</span><span class="span"> 5,000 TRY</span></td>
+          <td><span translate>Monthly deposit:</span><span class="span"> 1,000,000 TRY</span></td>
+        </tr>
+        <tr>
+          <td><span translate>Monthly withdrawal:</span><span class="span"> 5,000 TRY</span></td>
+          <td><span translate>Monthly withdrawal:</span><span class="span"> 1,000,000 TRY</span></td>
+        </tr>
+      </table>
+    </custom-tab>
+    <custom-tab tabTitle="{{ 'Fees' | translate }}">
+      <h4 class="title" translate>Fees</h4>
+      <p>{{ 'fees-first' | translate }}</p>
+      <p class="mb-0">{{ 'fees-second' | translate }}</p>
+      <p>{{ 'fees-third' | translate }}</p>
+      <p>{{ 'fees-fourth' | translate }}</p>
+    </custom-tab>
+  </custom-tabs>
+  <div class="why-payyex pb-150 pb-md-50">
+    <h1 class="title black" translate>Why Payyex?</h1>
+    <div class="why-content">
+      <div class="answers">
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-first-title" | translate }}</h2>
+          <p>{{ "why-payyex-first" | translate }}</p>
+        </div>
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-second-title" | translate }}</h2>
+          <p>{{ "why-payyex-second" | translate }}</p>
+        </div>
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-third-title" | translate }}</h2>
+          <p>{{ "why-payyex-third" | translate }}</p>
+        </div>
+        <div class="buttons">
+          <div class="button-wrapper">
+            <a class="btn btn_big waves-effect" draggable="false" translate (click)="openModal()">Sign Up Now</a>
+          </div>
+          <a draggable="false" class="btn additional" translate [routerLink]="['/faq']">{{ "api-button-question" | translate }}</a>
+        </div>
+      </div>
+      <div class="subscribe">
+        <div class="subscribe-title" translate>
+          Stay tuned!
+        </div>
+        <app-subscribe></app-subscribe>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="dot"></div>
+      <div class="coin-dot"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>
+
+

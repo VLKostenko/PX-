@@ -1,0 +1,45 @@
+<h1 class="title">{{ "corporate-title" | translate }}</h1>
+<div class="content">
+  <div class="halfsize">
+    <p class="content-par">{{ "corporate-subtitle" | translate }}</p>
+    <ul>
+      <li>{{ "corporate-first-paragraph" | translate }}</li>
+      <li>{{ "corporate-second-paragraph" | translate }}</li>
+      <li>{{ "corporate-third-paragraph" | translate }}</li>
+    </ul>
+  </div>
+
+  <div class="button-wrapper">
+    <a class="btn btn_big waves-effect" draggable="false" translate [routerLink]="['/contact']">REACH US</a>
+  </div>
+
+  <div class="why-payyex mb-50 mb-md-25">
+    <h1 class="title black" translate>{{ "api-why-payyex-titel" | translate }}</h1>
+    <div class="why-content">
+      <div class="answers">
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-first-title" | translate }}</h2>
+          <p>{{ "why-payyex-first" | translate }}</p>
+        </div>
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-second-title" | translate }}</h2>
+          <p>{{ "why-payyex-second" | translate }}</p>
+        </div>
+        <div class="block">
+          <h2 class="subtitle-bold black">{{ "why-payyex-third-title" | translate }}</h2>
+          <p>{{ "why-payyex-third" | translate }}</p>
+        </div>
+        <div class="buttons">
+          <a draggable="false" class="btn btn_big waves-effect" translate (click)="openModal()">{{ "api-button-sign" | translate }}</a>
+          <a draggable="false" class="btn additional" translate [routerLink]="['/faq']">{{ "api-button-question" | translate }}</a>
+        </div>
+      </div>
+      <div class="subscribe">
+        <div class="subscribe-title" translate>
+          Stay tuned!
+        </div>
+        <app-subscribe></app-subscribe>
+      </div>
+    </div>
+  </div>
+</div>

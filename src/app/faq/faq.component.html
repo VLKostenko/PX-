@@ -1,0 +1,100 @@
+<div class="page-content">
+  <div class="inside-header">
+    <a class="logo" routerLink="/home" draggable="false">
+      <img src="assets/images/logo-violet.svg" alt="logo payyex" draggable="false">
+      <div class="title">{{"slogan" | translate}}</div>
+    </a>
+  </div>
+  <a draggable="false" [routerLink]="['/']" class="move-back">
+    <img src="assets/images/arrow-up.svg" alt="arrow up" draggable="false">
+  </a>
+  <h1 class="title black" translate>{{"Support" | translate}}</h1>
+  <div class="questions-list halfsize">
+    <input [(ngModel)]="searchText" class="question-search" type="text" [placeholder]="'search-question' | translate">
+    <div class="questions-wrapper" [class.hidden]="notFound">
+      <div *ngFor="let item of faqList | filter:searchText"
+           id="{{item.id}}"
+           class="question-tab"
+           [class.filtered]="item.filter"
+           [class.opened]="faqOpened && faqShowId == item.id"
+           (click)="switchFaq(item.id, $event)"
+      >
+        <span class="question">{{ item.question }}</span>
+        <p class="answer" [innerHTML]="item.answer"></p>
+        <!--div class="buttons">
+          <a class="likes">
+            <span class="image"></span>
+            <span class="number">{{ item.likes }}</span>
+          </a>
+          <a draggable="false" class="open" (click)="openFaq(item.id)">
+            <div class="image"></div>
+          </a>
+        </div-->
+      </div>
+    </div>
+    <!--div class="faq-opened-block" [class.hidden]="!faqOpened || notFound">
+      <a draggable="false" class="back" (click)="closeFaq()">
+        <div class="image"></div>
+        <span class="text">Back to previous page</span>
+      </a>
+      <div class="faq-opened" *ngFor="let item of faqList; let index = index;" [class.hidden]="faqShowId !== index">
+        <span class="question">{{ item.question }}</span>
+        <p class="answer" [innerHTML]="item.answer"></p>
+        <div class="buttons">
+          <a class="likes">
+            <span class="image"></span>
+            <span class="number">
+                {{ item.likes }}
+              </span>
+          </a>
+        </div>
+      </div>
+    </div-->
+    <div class="not-found halfsize" [class.hidden]="!notFound">
+      <div class="text">{{"search-not-found" | translate}}</div>
+      <a draggable="false" class="back" (click)="backToMain()">
+        <div class="image"></div>
+        <span class="text">{{"search-back" | translate}}</span>
+      </a>
+    </div>
+  </div>
+  <!--<custom-tabs [changeInput]="searchText"-->
+               <!--(opened)="checkCategory($event)"-->
+               <!--[categories]="true">-->
+    <!--<h3 class="list-title" [class.hidden]="categoryFilter">Categories</h3>-->
+    <!--<h3 class="list-title link" [class.hidden]="!linkBack && !faqOpened || !categoryFilter" (click)="backToMain()">-->
+      <!--<span class="image"></span>-->
+      <!--<span>Back to full list</span>-->
+    <!--</h3>-->
+    <!--<input [(ngModel)]="searchText" class="question-search" type="text" placeholder="Search Question">-->
+    <!--<div class="tabs-wrapper" [class.hidden]="faqOpened || notFound">-->
+      <!--<custom-tab-->
+              <!--*ngFor="let item of faqList | filter: searchText"-->
+              <!--[tabTitle]="item.category"-->
+              <!--[class.filtered]="item.filter">-->
+        <!--<span class="question">{{ item.question }}</span>-->
+        <!--<p class="answer" [innerHTML]="item.answer"></p>-->
+        <!--<div class="buttons">-->
+          <!--<a class="likes">-->
+            <!--<span class="image"></span>-->
+            <!--<span class="number">-->
+            <!--{{ item.likes }}-->
+          <!--</span>-->
+          <!--</a>-->
+          <!--<a draggable="false" class="open" (click)="openFaq(item.id)">-->
+            <!--<div class="image"></div>-->
+          <!--</a>-->
+        <!--</div>-->
+      <!--</custom-tab>-->
+    <!--</div>-->
+  <!--</custom-tabs>-->
+  <div id="modalStayTuned" class="modal stay-tuned" [class.active]="modalVisible">
+    <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+      <img src="assets/images/close-black.svg" alt="close icon">
+    </a>
+    <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+    <h2 translate>Stay tuned!</h2>
+    <app-subscribe></app-subscribe>
+  </div>
+  <div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>
+</div>

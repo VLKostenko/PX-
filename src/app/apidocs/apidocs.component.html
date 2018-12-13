@@ -1,0 +1,179 @@
+<div class="page-content">
+	<div class="inside-header">
+		<a class="logo" routerLink="/home" draggable="false">
+			<img src="assets/images/logo-violet.svg" alt="logo payyex" draggable="false">
+			<div class="title">{{"slogan" | translate}}</div>
+		</a>
+	</div>
+  <a draggable="false" [routerLink]="['/']" class="move-back">
+    <img src="assets/images/arrow-up.svg" alt="arrow up" draggable="false">
+  </a>
+  <h1 class="title black" translate>API</h1>
+  <ng-template [ngIf]="listOfPages">
+    <custom-tabs [activeTabs]="true">
+      <custom-tab
+              class="common"
+              *ngFor="let tab of listOfPages"
+              tabTitle="{{ tab.path | apidocsPath }}">
+        <ul class="api">
+          <li class="names" *ngIf="tab.path !== generalTab">
+            <div class="name" translate>Method</div>
+            <div class="request" translate>Request</div>
+            <div class="type" translate>Type</div>
+          </li>
+          <ng-template [ngIf]="tab.path === generalTab">
+            <li>
+              <div class="api-text general-tab">
+                <h2 class="subtitle-bold black">{{ "api-text-subtitle-first" | translate }}</h2>
+                <p [innerHTML]="'api-text-first' | translate"></p>
+                <h2 class="subtitle-bold black">{{ "api-text-subtitle-second" | translate }}</h2>
+                <p>{{ "api-text-second" | translate }}</p>
+                <h2 class="subtitle-bold black">{{ "api-text-subtitle-third" | translate }}</h2>
+                <p>{{ "api-text-third" | translate }}</p>
+                <h2 class="subtitle-bold black">{{ "api-text-subtitle-fourth" | translate }}</h2>
+                <p>{{ "api-text-fourth" | translate }}</p>
+                <p class="important-text" translate>{{ "api-text-comm"| translate }}</p>
+              </div>
+            </li>
+          </ng-template>
+
+          <ng-template ngFor let-apiName [ngForOf]="apiNames">
+            <ng-template [ngIf]="tab.path === ('/../' + apiName + '.json')">
+              <li class="line"
+                  *ngFor="let line of api[apiName].api; let index = index;"
+                  [class.active]="api[apiName].openedInfo[index]">
+                <div class="main"
+                     (click)="api[apiName].openedInfo[index] = !api[apiName].openedInfo[index]">
+                  <div class="name">
+                    <div class="api-name">{{ line.nickname }}</div>
+                    <div class="api-summary">{{ line.summary }}</div>
+                  </div>
+                  <div class="request">
+                    <div class="api-request">
+                      {{ line.method }}
+                    </div>
+                  </div>
+                  <div class="type">
+                    <div class="api-type">
+                      {{ api[apiName].apiTypes[index] }}
+                    </div>
+                  </div>
+                </div>
+                <div class="addition">
+                  <div class="notes">
+                    <div class="addition-title" translate>Implementation Notes</div>
+                    <div class="addition-text">{{ line.notes }}</div>
+                  </div>
+                  <ng-template [ngIf]="api[apiName].models[line.type]">
+                    <div class="response">
+                      <div class="addition-title" translate>Response Class</div>
+                      <custom-tabs class="common" [activeTabs]="true">
+                        <custom-tab tabTitle="{{'Model' | translate}}">
+                          <div *ngFor="let model of line.referral_models">
+                            <div class="model">
+                              <span class="model-title">{{ model }}</span>
+                              <pre class="model-properties"><code>{{ api[apiName].models[model] | json }}</code></pre>
+                            </div>
+                          </div>
+                        </custom-tab>
+                        <custom-tab tabTitle="{{'Model Schema' | translate}}">
+                          <pre class="json">{{ api[apiName].models[line.type] | json }}</pre>
+                        </custom-tab>
+                      </custom-tabs>
+                    </div>
+                  </ng-template>
+                  <div class="content-type half-width">
+                    <div class="addition-subtitle" translate>Response Content Type</div>
+                    <div class="content-type-text">{{ line.consumes }}</div>
+                  </div>
+                  <div class="addition-title" translate>Parameters</div>
+                  <!--<form class="parameters"-->
+                        <!--#form="ngForm"-->
+                        <!--(ngSubmit)="formSubmit(-->
+                        <!--commonApiApiesPaths[index],-->
+                        <!--line.method,-->
+                        <!--form.value,-->
+                        <!--index,-->
+                        <!--tab.path)"-->
+                        <!--ngNativeValidate>-->
+                  <form class="parameters"
+                        #form="ngForm"
+                        ngNativeValidate>
+                    <div class="parameter"
+                         *ngFor="let parameter of api[apiName].apiParams[index]; let first = first; let last = last;"
+                         [class.last]="last">
+                      <div class="parameter-info half-width">
+                        <div class="parameter-name-desc">
+                          <div class="name">{{ parameter.name }}</div>
+                          <div class="desc">{{ parameter.description }}</div>
+                        </div>
+                        <div class="parameter-input">
+                          <input [class.required]="parameter.required"
+                                 minlength="1"
+                                 name="{{ parameter.name }}"
+                                 [attr.placeholder]="parameter.required ? 'Required' : ''"
+                                 [attr.required]="parameter.required ? 'required' : null"
+                                 type="text"
+                                 value=""
+                                 #name="ngModel"
+                                 ngModel>
+                        </div>
+                      </div>
+                      <div class="parameter-type half-width">
+                        <div class="addition-subtitle" translate>Parameter Type</div>
+                        <div class="parameter-type-type">
+                          <span>{{ parameter.type }}</span>
+                        </div>
+                      </div>
+                      <div class="data-type half-width">
+                        <div class="addition-subtitle" translate>Data Type</div>
+                        <div class="data">
+                          <span>{{ parameter.paramType }}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="try">
+                      <!--input class="submit btn btn_big waves-effect"
+                                                 name="commit"
+                                                 type="button"
+                                                 type="submit"
+                                                 value="Try it out!"-->
+                      <input class="submit btn btn_big waves-effect"
+                             name="commit"
+                             type="button"
+                             (click)="openModal()"
+                             type="button"
+                             value="{{'try-it-out' | translate}}">
+                    </div>
+
+                    <div class="results" *ngIf="commonRequestResult[index]">
+                      <div class="addition-title" translate>Request URL</div>
+                      <pre>{{ commonRequestUrl[index] }}</pre>
+                      <div class="addition-title" translate>Response Body</div>
+                      <pre>{{ commonResponseBody[index] }}</pre>
+                      <div class="addition-title" translate>Response Code</div>
+                      <pre>{{ commonResponseCode[index] }}</pre>
+                      <div class="addition-title" translate>Response Headers</div>
+                      <pre><code>{{ commonResponseHeaders[index] | json }}</code></pre>
+                    </div>
+                  </form>
+                </div>
+              </li>
+            </ng-template>
+          </ng-template>
+        </ul>
+      </custom-tab>
+    </custom-tabs>
+  </ng-template>
+
+</div>
+
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>

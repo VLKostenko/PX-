@@ -1,0 +1,99 @@
+<div class="page-content">
+  <div class="inside-header">
+    <a class="logo" routerLink="/home" draggable="false">
+      <img src="assets/images/logo-white.svg" alt="logo payyex" draggable="false">
+      <div class="title">{{"slogan" | translate}}</div>
+    </a>
+  </div>
+  <a draggable="false" [routerLink]="['/']" class="move-back">
+    <img src="assets/images/arrow-up-white.svg" alt="arrow up" draggable="false">
+  </a>
+  <div class="video-wrapper">
+    <video class="video" poster="assets/images/video-poster.jpg" playsinline="" autoplay="" muted="" loop="">
+      <source src="assets/images/video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!--<div class="content pb-250">-->
+    <!--<p class="pl-50 pr-50 mg-auto w-70 w-xs-100 subtitle" translate>{{ "contact-subtitle" | translate }}</p>-->
+  <!--</div>-->
+  <div class="contact-form">
+    <form class="form" #contactForm="ngForm" (ngSubmit)="contact(contactForm)" novalidate>
+      <h2 class="form-title" translate>Keep In Touch</h2>
+      <div *ngIf="!showSuccess">
+        <div class="row">
+          <div class="input-field col s12 contact-form__row">
+            <div *ngIf="currentLanguage === 'en'">
+              <select [ngModel]="initialValue"
+                      name="category"
+                      (ngModelChange)="change($event)"
+                      materialize="material_select"
+                      required>
+                <option value="" selected>Please select a category</option>
+                <option [value]="'Deposit/withdrawal'">Deposit/withdrawal</option>
+                <option [value]="'Platform & Trading'">Platform & Trading</option>
+                <option [value]="'Merchant plugin'">Merchant plugin</option>
+                <option [value]="'Corporate account activation'">Corporate account activation</option>
+                <option [value]="'Other'">Other</option>
+              </select>
+            </div>
+            <div *ngIf="currentLanguage === 'tr'">
+              <select [ngModel]="initialValue"
+                      name="category"
+                      (ngModelChange)="change($event)"
+                      materialize="material_select"
+                      required>
+                <option value="" selected>Lütfen bir kategori seçin</option>
+                <option [value]="'Deposit/withdrawal'">Yatırma/çekme</option>
+                <option [value]="'Platform & Trading'" translate>Platform & al-sat işlemleri</option>
+                <option [value]="'Merchant plugin'">Merchant plugin</option>
+                <option [value]="'Corporate account activation'">Kurumsal hesap başvurusu</option>
+                <option [value]="'Other'">Diğer</option>
+              </select>
+            </div>
+            <label class="contact-form__select-label" translate>Categories</label>
+          </div>
+          <div class="input-field col s5 contact-form__row contact-form__name">
+            <input id="name" type="text" class="validate" name="name" ngModel required>
+            <label for="name" translate>Your Name</label>
+          </div>
+          <div class="input-field col s5 offset-s2 contact-form__row">
+            <input id="email" type="email" class="validate" name="email" ngModel required>
+            <label for="email" translate>Email Address</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="message"
+                      class="validate materialize-textarea"
+                      placeholder=""
+                      name="message"
+                      ngModel
+                      required></textarea>
+            <label for="message" translate>Your Message</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn_big waves-effect" translate [disabled]="!contactForm.valid">Send Message</button>
+      </div>
+      <div *ngIf="showSuccess">
+        <h2 class="form-title mt-100">{{"message-sent" | translate}}</h2>
+      </div>
+    </form>
+    <div class="info">
+      <div class="text">
+        <div class="info-title" translate>Information</div>
+        <div class="info-text mb-40">info@payyex.com</div>
+        <div class="info-title" translate>Support</div>
+        <div class="info-text mb-40">support@payyex.com</div>
+        <div class="info-title">Corporate</div>
+        <div class="info-text">corporate@payyex.com</div>
+      </div>
+      <div class="address">
+        <div>{{'address-1' | translate}}</div>
+        <div>{{'address-2' | translate}}</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>

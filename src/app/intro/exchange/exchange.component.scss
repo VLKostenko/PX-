@@ -1,0 +1,281 @@
+:host {
+  background-color: #f6f8f9;
+  position: relative;
+  z-index: 0;
+}
+.content {
+  & > p {
+    max-width: 60%;
+    margin: auto;
+  }
+  @media screen and (min-width: 1534px) and (max-width: 1656px) {
+    &:before {
+      height: calc(10% + 5px);
+    }
+  }
+  @media screen and (min-width: 1300px) and (max-width: 1533px) {
+    &:before {
+      height: calc(6% + 50px);
+      top: 170px;
+    }
+  }
+  @media screen and (min-width: 1239px) and (max-width: 1299px) {
+    &:before {
+      height: calc(11% + 19px);
+      top: 190px;
+    }
+  }
+  @media screen and (max-width: 1299px) {
+    &:before {
+      height: calc(6% + 50px);
+      top: 173px;
+    }
+  }
+  @media screen and (max-width: 1240px) {
+    &:before {
+      height: calc(6.4% + 50px);
+      top: 173px;
+    }
+  }
+  @media screen and (min-width: 0px) and (max-width: 1199px) {
+    &:before {
+      display: none;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+  #why-payyex-exchange {
+    .why-content {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .answers {
+        flex-direction: column;
+        width: 40%;
+
+        .buttons {
+          position: static;
+        }
+      }
+
+      .terminal {
+        bottom: 130px;
+      }
+    }
+  }
+}
+
+.exchange-blocks {
+  position: relative;
+  align-items: flex-start !important;
+  padding: 0 20px;
+  margin-top: 0 !important;
+  background: url('../../../assets/images/exchange-line-1.gif') repeat-x 0 83px;
+
+  .exchange-corner-2 {
+    top: 83px;
+    right: -50px;
+    left: auto;
+  }
+
+  .block:first-child .image img {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1279px) {
+    background: none;
+  }
+  @media screen and (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+  .subtitle {
+    @media screen and (max-width: 767px) {
+      margin-top: -10px !important;
+      margin-bottom: 10px !important;
+      text-align: left !important;
+    }
+  }
+  .block {
+    width: 33%;
+    padding: 0 45px;
+    margin: 0;
+
+    .text {
+      height: auto;
+    }
+    .image {
+      text-align: center;
+      img {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin: 0;
+      margin-top: 30px;
+    }
+    @media screen and (max-width: 1000px) {
+      padding: 0 15px;
+    }
+    @media (min-width: 768px) and (max-width: 1199px) {
+      width: 31.33%;
+      margin: 0 1%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .dot {
+    content: '';
+    background: url('../../../assets/images/exchange-line-dot.png') no-repeat 50% 50%;
+    background-size: contain;
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    z-index: 1;
+    top: 83px;
+    margin-top: -15px;
+
+    &.left {
+      left: 32%;
+    }
+
+    &.right {
+      right: 40px;
+    }
+  }
+
+  .block {
+    position: relative;
+  }
+}
+
+.why-payyex {
+  position: relative;
+  @media screen and (max-width: 767px) {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &:after {
+    content: '';
+    background: url('../../../assets/images/exchange-line-dot.png') no-repeat 50% 50%;
+    background-size: contain;
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    z-index: 1;
+    top: -84px;
+    right: -79px;
+    @media screen and (max-width: 1199px) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 0px) and (max-width: 1024px) {
+    &:after {
+      display: none;
+    }
+  }
+  .answers {
+    .block {
+      width: auto;
+    }
+  }
+}
+.paragraph-wrapper {
+  max-width: 80% !important;
+  p {
+    text-align: left;
+  }
+  @media screen and (max-width: 1199px) {
+    height: initial;
+  }
+
+  @media screen and (max-width: 767px) {
+    max-width: 100% !important;
+  }
+}
+
+.subtitle-bold {
+  @media screen and (max-width: 767px) {
+    margin-top: 40px !important;
+  }
+}
+
+.terminal {
+  width: 502px;
+  height: 554px;
+  background: url('../../../assets/images/terminal-1.png') no-repeat;
+  position: absolute;
+  z-index: 1;
+  right: -65px;
+  bottom: -160px;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 186px;
+    height: 341px;
+    background: url('../../../assets/images/terminal-line.png') no-repeat;
+    position: absolute;
+    z-index: 1;
+    left: -186px;
+    bottom: 0;
+  }
+}
+
+.exchange-corner-1 {
+  box-sizing: initial;
+  width: 109px;
+  height: 86px;
+  background: #f6f8f9 url('../../../assets/images/exchange-corner-1.png') no-repeat 27px 0;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  padding-left: 27px;
+}
+
+.exchange-corner-2 {
+  width: 118px;
+  height: 111px;
+  background: url('../../../assets/images/exchange-corner-2.png') no-repeat;
+  position: absolute;
+  top: 60px;
+  left: -103px;
+}
+
+.exchange-line-1 {
+  background: url('../../../assets/images/exchange-line-1.gif') repeat-x 0 0;
+}
+
+.exchange-line-2 {
+  background: url('../../../assets/images/exchange-line-2.gif') repeat-y 12px 0;
+  padding-bottom: 30px;
+
+  @media screen and (max-width: 1279px) {
+    background: none;
+  }
+}
+.exchange-line-vertical {
+  width: 3px;
+  height: 73%;
+  background: url('../../../assets/images/exchange-line-2.gif') repeat-y;
+  position: absolute;
+  bottom: 0;
+  right: -65px;
+}
+
+@media screen and (max-width: 1279px) {
+  .terminal,
+  .exchange-corner-1,
+  .exchange-corner-2,
+  .exchange-line-1,
+  .exchange-line-vertical {
+    display: none;
+  }
+}

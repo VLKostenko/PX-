@@ -1,0 +1,82 @@
+<h1 class="title">{{ "merchant-title" | translate }}</h1>
+<div class="content">
+  <div class="paragraph-wrapper">
+    <p class="text-left">{{ "merchant-first-paragraph" | translate }}</p>
+    <p class="text-left">{{ "merchant-second-paragraph" | translate }}</p>
+    <p class="text-left">{{ "merchant-third-paragraph" | translate }}</p>
+    <br>
+  </div>
+  <div id="merchant" class="exchange-blocks" *ngIf="currentLanguage === 'tr'">
+    <div class="block">
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "merchant-blocks-first-title" | translate }}</h2>
+        <p>{{ "merchant-blocks-first" | translate }}</p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "merchant-blocks-second-title" | translate }}</h2>
+        <p>{{ "merchant-blocks-second" | translate }}</p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "merchant-blocks-third-title" | translate }}</h2>
+        <p>{{ "merchant-blocks-third" | translate }}</p>
+      </div>
+    </div>
+  </div>
+  <p class="text-center link-title">{{ "merchant-link-paragraph" | translate }}</p>
+  <div class="button-wrapper">
+    <a class="btn btn_big waves-effect signup-button"
+       draggable="false"
+       target="_blank"
+       rel="noreferrer noopener"
+       translate
+       (click)="openModal()">How To</a>
+  </div>
+</div>
+
+<div class="why-payyex pb-150 pb-md-50">
+  <h1 class="title black" translate>Why Payyex?</h1>
+  <div class="why-content">
+    <div class="answers">
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-first-title" | translate }}</h2>
+        <p>{{ "why-payyex-first" | translate }}</p>
+      </div>
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-second-title" | translate }}</h2>
+        <p>{{ "why-payyex-second" | translate }}</p>
+      </div>
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-third-title" | translate }}</h2>
+        <p>{{ "why-payyex-third" | translate }}</p>
+      </div>
+      <div class="buttons">
+        <a class="btn btn_big waves-effect" draggable="false" translate (click)="openModal()">Sign Up Now</a>
+        <a draggable="false" class="btn additional" translate [routerLink]="['/faq']">{{ "api-button-question" | translate }}</a>
+      </div>
+    </div>
+    <div class="subscribe">
+      <div class="subscribe-title" translate>
+        Stay tuned!
+      </div>
+      <app-subscribe></app-subscribe>
+    </div>
+  </div>
+  <div class="terminal">
+    <div class="dot"></div>
+    <div class="coin-dot"></div>
+  </div>
+</div>
+
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>

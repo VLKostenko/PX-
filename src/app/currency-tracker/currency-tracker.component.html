@@ -1,0 +1,644 @@
+<div class="currency-block-wrapper">
+  <div class="currency-block-inner" dragScroll="" [scrollbar-hidden]="true" [drag-scroll-x-disabled]="false" [drag-scroll-y-disabled]="true">
+    <div class="currency-block-line"
+         [class.animating]="animateTicker"
+         [class.pause]="pauseTicker"
+         (mouseenter)="pauseTicker = true"
+         (mouseleave)="pauseTicker = false">
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 0"
+           [class.active-mobile]="activeCurrencyBlockMobile == 0"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 0)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 0)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/bitcoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">BTC/USD</div>
+            <div class="price">{{ _currencieBTCUSD.price | number : '1.0-0'  }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieBTCUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieBTCUSD.differencePercent | number : '1.2-2' | removeMinus}}%</div>
+            <div class="value">{{ _currencieBTCUSD.difference | number : '1.2-2' | removeMinus}}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 1"
+           [class.active-mobile]="activeCurrencyBlockMobile == 1"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 1)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 1)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/bitcoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">BTC/TRY</div>
+            <div class="price">{{ _currencieBTCTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieBTCTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieBTCTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieBTCTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 2"
+           [class.active-mobile]="activeCurrencyBlockMobile == 2"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 2)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 2)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/USD</div>
+            <div class="price">{{ _currencieETHUSD.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 3"
+           [class.active-mobile]="activeCurrencyBlockMobile == 3"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 3)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 3)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/TRY</div>
+            <div class="price">{{ _currencieETHTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 4"
+           [class.active-mobile]="activeCurrencyBlockMobile == 4"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 4)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 4)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/dash.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">DASH/USD</div>
+            <div class="price">{{ _currencieDASHUSD.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieDASHUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieDASHUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieDASHUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 5"
+           [class.active-mobile]="activeCurrencyBlockMobile == 5"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 5)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 5)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/litecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">LTC/TRY</div>
+            <div class="price">{{ _currencieLTCTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieLTCTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieLTCTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieLTCTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 6"
+           [class.active-mobile]="activeCurrencyBlockMobile == 6"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 6)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 6)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/namecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">NMC/USD</div>
+            <div class="price">{{ _currencieNMCUSD.price | number : '1.2-2' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieNMCUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieNMCUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieNMCUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 7"
+           [class.active-mobile]="activeCurrencyBlockMobile == 7"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 7)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 7)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/BTC</div>
+            <div class="price">{{ _currencieETHBTC.price | number : '1.4-4' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHBTC.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHBTC.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHBTC.difference | number : '1.4-4' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 8"
+           [class.active-mobile]="activeCurrencyBlockMobile == 8"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 8)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 8)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/dogecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">DOGE/BTC</div>
+            <div class="price">{{ _currencieDOGEBTC.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieDOGEBTC.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieDOGEBTC.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieDOGEBTC.difference | number : '1.0-0' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <!-- to make picker working right way we should render line twice -->
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 0"
+           [class.active-mobile]="activeCurrencyBlockMobile == 0"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 0)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 0)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/bitcoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">BTC/USD</div>
+            <div class="price">{{ _currencieBTCUSD.price | number : '1.0-0'  }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieBTCUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieBTCUSD.differencePercent | number : '1.2-2' | removeMinus}}%</div>
+            <div class="value">{{ _currencieBTCUSD.difference | number : '1.2-2' | removeMinus}}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 1"
+           [class.active-mobile]="activeCurrencyBlockMobile == 1"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 1)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 1)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/bitcoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">BTC/TRY</div>
+            <div class="price">{{ _currencieBTCTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieBTCTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieBTCTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieBTCTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 2"
+           [class.active-mobile]="activeCurrencyBlockMobile == 2"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 2)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 2)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/USD</div>
+            <div class="price">{{ _currencieETHUSD.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 3"
+           [class.active-mobile]="activeCurrencyBlockMobile == 3"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 3)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 3)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/TRY</div>
+            <div class="price">{{ _currencieETHTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 4"
+           [class.active-mobile]="activeCurrencyBlockMobile == 4"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 4)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 4)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/dash.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">DASH/USD</div>
+            <div class="price">{{ _currencieDASHUSD.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieDASHUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieDASHUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieDASHUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 5"
+           [class.active-mobile]="activeCurrencyBlockMobile == 5"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 5)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 5)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/litecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">LTC/TRY</div>
+            <div class="price">{{ _currencieLTCTRY.price | number : '1.0-0' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieLTCTRY.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieLTCTRY.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieLTCTRY.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 6"
+           [class.active-mobile]="activeCurrencyBlockMobile == 6"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 6)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 6)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/namecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">NMC/USD</div>
+            <div class="price">{{ _currencieNMCUSD.price | number : '1.2-2' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieNMCUSD.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieNMCUSD.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieNMCUSD.difference | number : '1.2-2' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 7"
+           [class.active-mobile]="activeCurrencyBlockMobile == 7"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 7)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 7)">
+        <div class="icon">
+          <img draggable="false" src="assets/images/currencies/ethereum.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">ETH/BTC</div>
+            <div class="price">{{ _currencieETHBTC.price | number : '1.4-4' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieETHBTC.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieETHBTC.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieETHBTC.difference | number : '1.4-4' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+      <div class="currency-block noselect"
+           [class.active]="activeCurrencyBlock == 8"
+           [class.active-mobile]="activeCurrencyBlockMobile == 8"
+           (touchstart)="swipeCurrencyMobile($event, 'start', 8)"
+           (touchend)="swipeCurrencyMobile($event, 'end', 8)">
+        <div class="icon">user-select
+          <img draggable="false" src="assets/images/currencies/dogecoin.svg" alt="currency icon">
+        </div>
+        <div class="values">
+          <div class="top">
+            <div class="name">DOGE/BTC</div>
+            <div class="price">{{ _currencieDOGEBTC.price | number : '1.8-8' }}</div>
+          </div>
+          <div class="bottom" [ngClass]="_currencieDOGEBTC.increase ? 'increase' : 'decrease'">
+            <div class="arrow"></div>
+            <div class="percent">{{ _currencieDOGEBTC.differencePercent | number : '1.2-2' | removeMinus }}%</div>
+            <div class="value">{{ _currencieDOGEBTC.difference | number : '1.8-8' | removeMinus }}</div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="currency-modal">
+          <a href="javascript:void(0)" class="close" (click)="toggleModal(null)">
+            <img draggable="false" src="assets/images/close.svg" alt="close button">
+          </a>
+          <div class="date">
+            01.10.17 - 01.11.17
+          </div>
+          <div class="chart">
+            <app-currency-chart></app-currency-chart>
+          </div>
+        </div>
+        <div class="chart-mobile">
+          <app-currency-chart></app-currency-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="currency-block-controls">
+  <li *ngFor="let control of currenciesArray" [class.active]="activeCurrencyBlockMobile == control " (click)="slideToCurrency(control)"></li>
+</ul>

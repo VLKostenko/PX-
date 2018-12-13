@@ -1,0 +1,94 @@
+<div class="exchange-line-vertical"></div>
+
+<h1 class="title black line">{{ "exchange-title" | translate }}</h1>
+<div class="content">
+  <div class="exchange-line-2">
+    <div class="paragraph-wrapper">
+      <p>{{ "exchange-first-paragraph" | translate }}</p>
+      <p>{{ "exchange-second-paragraph" | translate }}</p>
+    </div>
+  </div>
+  <div class="exchange-blocks">
+    <div class="exchange-corner-1"></div>
+    <div class="exchange-corner-2"></div>
+    <div class="exchange-line-1">
+      <div class="dot left"></div>
+      <div class="dot right"></div>
+    </div>
+    <div class="block">
+      <div class="image">
+        <img draggable="false" src="assets/images/exchange-interface.svg" alt="interface">
+      </div>
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "exchange-blocks-first-title" | translate }}</h2>
+        <p>{{ "exchange-blocks-first" | translate }}</p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="image">
+        <img draggable="false" src="assets/images/exchange-support.svg" alt="support">
+      </div>
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "exchange-blocks-second-title" | translate }}</h2>
+        <p>{{ "exchange-blocks-second" | translate }}</p>
+      </div>
+    </div>
+    <div class="block">
+      <div class="image">
+        <img draggable="false" src="assets/images/exchange-tools.svg" alt="tools">
+      </div>
+      <div class="text">
+        <h2 class="subtitle" translate>{{ "exchange-blocks-third-title" | translate }}</h2>
+        <p>{{ "exchange-blocks-third" | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="why-payyex pb-md-50" id="why-payyex-exchange">
+  <h1 class="title black" translate>Why Payyex?</h1>
+  <div class="why-content">
+    <div class="answers">
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-first-title" | translate }}</h2>
+        <p>{{ "why-payyex-first" | translate }}</p>
+      </div>
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-second-title" | translate }}</h2>
+        <p>{{ "why-payyex-second" | translate }}</p>
+      </div>
+      <div class="block">
+        <h2 class="subtitle-bold black">{{ "why-payyex-third-title" | translate }}</h2>
+        <p>{{ "why-payyex-third" | translate }}</p>
+      </div>
+      <div class="buttons">
+        <a class="btn btn_big waves-effect" draggable="false" translate (click)="openModal()">Sign Up Now</a>
+        <a draggable="false" class="btn additional" translate [routerLink]="['/faq']">{{ "api-button-question" | translate }}</a>
+      </div>
+    </div>
+    <div class="subscribe">
+      <div class="subscribe-title" translate>
+        Stay tuned!
+      </div>
+      <app-subscribe></app-subscribe>
+    </div>
+  </div>
+  <!--<div class="terminal">-->
+    <!--<div class="dot"></div>-->
+    <!--<div class="coin-dot"></div>-->
+  <!--</div>-->
+</div>
+
+<div class="exchange-corner-2"></div>
+<div class="terminal"></div>
+
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>
+
+

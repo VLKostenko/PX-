@@ -1,0 +1,12 @@
+<form #subscribeForm="ngForm" (ngSubmit)="register(subscribeForm)" novalidate>
+  <div class="row" *ngIf="!showSuccess">
+    <div class="input-field col s12">
+      <input id="email" name="email" type="email" class="validate" ngModel email="true" required>
+      <label for="email" translate>Email</label>
+    </div>
+  </div>
+  <div *ngIf="showSuccess">
+    <h2 translate>Thank you! You are subscribed!</h2>
+  </div>
+  <button *ngIf="!showSuccess" [disabled]="!subscribeForm.valid" type="submit" draggable="false" class="btn btn_big waves-effect" translate>Subscribe</button>
+</form>

@@ -1,0 +1,21 @@
+<div class="page-content">
+  <div class="inside-header">
+    <a class="logo" routerLink="/home" draggable="false">
+      <img src="assets/images/logo-violet.svg" alt="logo payyex" draggable="false">
+      <div class="title">{{"slogan" | translate}}</div>
+    </a>
+  </div>
+  <a draggable="false" [routerLink]="['/']" class="move-back">
+    <img src="assets/images/arrow-up.svg" alt="arrow up" draggable="false">
+  </a>
+  <router-outlet></router-outlet>
+</div>
+<div class="modal stay-tuned" [class.active]="modalVisible">
+  <a class="close-btn" href="javascript:void(0)" (click)="closeModal()">
+    <img src="assets/images/close-black.svg" alt="close icon">
+  </a>
+  <h1><span>Payyex</span><span translate> is coming soon...</span></h1>
+  <h2 translate>Stay tuned!</h2>
+  <app-subscribe></app-subscribe>
+</div>
+<div class="modal-bg" [class.active]="modalVisible" (click)="closeModal()"></div>

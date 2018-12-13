@@ -1,0 +1,15 @@
+@mixin font-face($font-name, $file-name, $font-style: normal, $font-weight: normal) {
+  @font-face {
+    font-family: '#{$font-name}';
+    src: url('../fonts/#{$file-name}.woff') format('woff'),
+         url('../fonts/#{$file-name}.otf') format('otf');
+
+    font-style: $font-style;
+    font-weight: $font-weight;
+  }
+}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Rubik:100,200,300,400,500,700,900');
+
+$opensans: "Open Sans", sans-serif;
+$rubik: "Rubik", sans-serif;

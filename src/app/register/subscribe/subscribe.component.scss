@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+button {
+  &[type='submit'] {
+    display: block;
+    margin: auto;
+  }
+}

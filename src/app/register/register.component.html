@@ -1,0 +1,12 @@
+<a draggable="false" href="javascript:void(0)" class="move-back" (click)="backClicked()">
+	<img src="assets/images/arrow-up.svg" alt="arrow up" draggable="false">
+</a>
+<div class="main-block-wrapper">
+	<a class="logo" routerLink="/home" draggable="false">
+		<img src="assets/images/logo-blue.png" alt="logo payyex" draggable="false">
+		<div class="title">{{"slogan" | translate}}</div>
+	</a>
+	<div class="block" [@fadeAnimation]="getRouterOutletState(o)">
+		<router-outlet #o="outlet"></router-outlet>
+	</div>
+</div>
